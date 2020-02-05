@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/txt_city_name"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorAccent"
             android:textSize="24sp"
             android:textStyle="bold"
             android:text="Weather in Danang,GB"
@@ -32,7 +32,7 @@
             </ImageView>
             <TextView
                 android:id="@+id/txt_temperature"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorAccent"
                 android:layout_marginLeft="8dp"
                 android:textSize="50sp"
                 android:textStyle="bold"
@@ -43,7 +43,7 @@
         </LinearLayout>
         <TextView
             android:id="@+id/txt_description"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorAccent"
             android:textSize="24sp"
             android:textStyle="bold"
             android:text="Weather in Turan, VN"
@@ -52,7 +52,7 @@
         </TextView>
         <TextView
             android:id="@+id/txt_date_time"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorAccent"
             android:textSize="18sp"
             android:textStyle="bold"
             android:text="Weather in Danang,GB"
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:background="@drawable/cell"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:text="Wind"
@@ -80,7 +80,7 @@
                 <TextView
                     android:id="@+id/txt_pressure"
                     android:background="@drawable/cell"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_column="1"
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:background="@drawable/cell"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:text="Pressure"
@@ -113,7 +113,7 @@
                 <TextView
                     android:id="@+id/txt_wind"
                     android:background="@drawable/cell"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_column="1"
@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:background="@drawable/cell"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:text="Humidity"
@@ -146,7 +146,7 @@
                 <TextView
                     android:id="@+id/txt_humidity"
                     android:background="@drawable/cell"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_column="1"
@@ -169,7 +169,7 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:background="@drawable/cell"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:text="Sunrise"
@@ -179,7 +179,7 @@
                 <TextView
                     android:id="@+id/txt_sunrise"
                     android:background="@drawable/cell"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_column="1"
@@ -202,7 +202,7 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:background="@drawable/cell"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:text="Sunset"
@@ -212,7 +212,7 @@
                 <TextView
                     android:id="@+id/txt_sunset"
                     android:background="@drawable/cell"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_column="1"
@@ -235,7 +235,7 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:background="@drawable/cell"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:text="Geo coords"
@@ -245,7 +245,7 @@
                 <TextView
                     android:id="@+id/txt_geo_coords"
                     android:background="@drawable/cell"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_column="1"

@@ -76,7 +76,7 @@ public class ToDayFragment extends Fragment{
 
     private void getWeatherInformation() {
         compositeDisposable.add(mService.getWeatherByLatLng(String.valueOf(Common.current_location.getLatitude()),
-                String.valueOf(Common.current_location.getLatitude()),
+                String.valueOf(Common.current_location.getLongitude()),
                 Common.APP_ID,
                 "metric")
                 .subscribeOn(Schedulers.io())

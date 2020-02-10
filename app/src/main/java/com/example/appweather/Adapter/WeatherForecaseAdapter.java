@@ -55,13 +55,10 @@ public class WeatherForecaseAdapter extends RecyclerView.Adapter<WeatherForecase
         ImageView img_weather;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
             img_weather = itemView.findViewById(R.id.img_weather);
             txt_date = itemView.findViewById(R.id.txt_date);
             txt_temperature = itemView.findViewById(R.id.txt_temperature);
             txt_description = itemView.findViewById(R.id.txt_description);
-
-
         }
     }
 }

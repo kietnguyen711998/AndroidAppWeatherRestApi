@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import com.label305.asynctask.SimpleAsyncTask;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.squareup.picasso.Picasso;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -91,7 +93,6 @@ public class CityFragment extends Fragment {
         new AsyncLoadCity().execute();
         return rootview;
     }
-
     private class AsyncLoadCity extends SimpleAsyncTask<List<String>> {
 
         @Override
@@ -99,8 +100,9 @@ public class CityFragment extends Fragment {
             lstCity = new ArrayList<>();
             try {
                 StringBuilder builder = new StringBuilder();
-                InputStream is = getResources().openRawResource(R.raw.city_list);
+                InputStream is = getResources().openRawResource(R.raw.city_list_min);
                 GZIPInputStream gzipInputStream = new GZIPInputStream(is);
+//                BufferedInputStream gzipInputStream = new BufferedInputStream(is);
 
                 InputStreamReader reader = new InputStreamReader(gzipInputStream);
                 BufferedReader in = new BufferedReader(reader);
@@ -113,7 +115,8 @@ public class CityFragment extends Fragment {
             }catch (IOException e){
                 e.printStackTrace();
             }
-            return null;
+            Log.d("nnn", "doInBackground: jijsjdkjsk"+lstCity.toString());
+            return lstCity;
         }
         @Override
         protected void onSuccess(final List<String> listCity) {

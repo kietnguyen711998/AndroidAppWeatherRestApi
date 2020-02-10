@@ -9,6 +9,7 @@
     <com.mancj.materialsearchbar.MaterialSearchBar
         style="@style/MaterialSearchBarLight"
         app:mt_hint="City Name"
+        app:mt_speechMode="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/searchBar"/>

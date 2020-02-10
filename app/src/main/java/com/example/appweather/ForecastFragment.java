@@ -52,12 +52,11 @@ public class ForecastFragment extends Fragment {
         txt_city_name = rootview.findViewById(R.id.txt_city_name);
         txt_geo_coord = rootview.findViewById(R.id.txt_geo_coord);
 
-        recycler_view = (RecyclerView) rootview.findViewById(R.id.recycler_view);
+        recycler_view = rootview.findViewById(R.id.recycler_view);
         recycler_view.setHasFixedSize(true);
         recycler_view.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.HORIZONTAL,false));
         getForecastWeatherInformation();
-
         return rootview;
     }
 
@@ -83,7 +82,7 @@ public class ForecastFragment extends Fragment {
         );
     }
 
-    private void displayForecastWeather(WeatherForecastResult weatherForecastResult) { ;
+    private void displayForecastWeather(WeatherForecastResult weatherForecastResult) {
         txt_city_name.setText(new StringBuilder(weatherForecastResult.city.name));
         txt_geo_coord.setText(new StringBuilder(weatherForecastResult.city.coord.toString()));
 

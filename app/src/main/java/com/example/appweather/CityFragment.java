@@ -100,9 +100,8 @@ public class CityFragment extends Fragment {
             lstCity = new ArrayList<>();
             try {
                 StringBuilder builder = new StringBuilder();
-                InputStream is = getResources().openRawResource(R.raw.city_list_min);
-                GZIPInputStream gzipInputStream = new GZIPInputStream(is);
-//                BufferedInputStream gzipInputStream = new BufferedInputStream(is);
+                InputStream is = getResources().openRawResource(R.raw.city_list);
+                BufferedInputStream gzipInputStream = new BufferedInputStream(is);
 
                 InputStreamReader reader = new InputStreamReader(gzipInputStream);
                 BufferedReader in = new BufferedReader(reader);
@@ -110,12 +109,13 @@ public class CityFragment extends Fragment {
                 String readed;
                 while ((readed = in.readLine()) != null)
                     builder.append(readed);
-                lstCity = new Gson().fromJson(builder.toString(),new TypeToken<List<String>>(){}.getType());
+                lstCity = new Gson().fromJson(builder.toString(), new TypeToken<List<String>>() {
+                }.getType());
+                Log.d("nnn", "doInBackground: "+lstCity.get(1));
 
-            }catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-            Log.d("nnn", "doInBackground: jijsjdkjsk"+lstCity.toString());
             return lstCity;
         }
         @Override

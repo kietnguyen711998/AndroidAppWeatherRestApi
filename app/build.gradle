@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.appweather"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -44,4 +44,5 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.github.mancj:MaterialSearchBar:0.8.2'
     implementation 'com.label305:asynctask:1.1.0'
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
 }

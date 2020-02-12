@@ -46,6 +46,7 @@ public class WeatherResult {
         return main;
     }
 
+
     public void setMain(Main main) {
         this.main = main;
     }

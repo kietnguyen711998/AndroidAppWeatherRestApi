@@ -1,6 +1,6 @@
 package com.example.appweather.Model;
 
-public class Main {
+public class Main extends Wind{
     private double temp ;
     private float pressure ;
     private int humidity;
@@ -10,6 +10,7 @@ public class Main {
     private double grnd_level;
 
     public Main() {
+
     }
 
     public double getTemp() {

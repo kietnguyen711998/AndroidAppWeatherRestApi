@@ -85,7 +85,6 @@ public class ForecastFragment extends Fragment {
     private void displayForecastWeather(WeatherForecastResult weatherForecastResult) {
         txt_city_name.setText(new StringBuilder(weatherForecastResult.city.name));
         txt_geo_coord.setText(new StringBuilder(weatherForecastResult.city.coord.toString()));
-
         WeatherForecaseAdapter weatherForecaseAdapter = new WeatherForecaseAdapter(getContext(),weatherForecastResult);
         recycler_view.setAdapter(weatherForecaseAdapter);
     }

@@ -94,10 +94,10 @@ public class ToDayFragment extends Fragment{
                         txt_temperature.setText(new StringBuilder(String.valueOf(weatherResult.getMain().getTemp()))
                                  .append("°C").toString());
                         txt_date_time.setText(Common.convertUnixToDate(weatherResult.getDt()));
+                        txt_wind.setText(new StringBuilder(("Sp:"+weatherResult.getWind().getSpeed()+
+                                " ,Deg:" + weatherResult.getWind().getDeg())).toString());
                         txt_pressure.setText(new StringBuilder(String.valueOf(weatherResult.getMain().getPressure()))
-                                .append("hpa").toString());
-                        txt_humidity.setText(new StringBuilder(String.valueOf(weatherResult.getMain().getHumidity()))
-                                .append(" % ").toString());
+                                .append(" hpa").toString());
                         txt_sunrise.setText(Common.convertUnixToHour(weatherResult.getSys().getSunrise()));
                         txt_sunset.setText(Common.convertUnixToHour(weatherResult.getSys().getSunset()));
                         txt_geo_coord.setText(new StringBuilder(weatherResult.getCoord().toString()));

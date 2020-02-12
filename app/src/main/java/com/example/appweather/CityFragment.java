@@ -186,8 +186,12 @@ public class CityFragment extends Fragment {
                         txt_temperature.setText(new StringBuilder(String.valueOf(weatherResult.getMain().getTemp()))
                                 .append("°C").toString());
                         txt_date_time.setText(Common.convertUnixToDate(weatherResult.getDt()));
+                        txt_wind.setText(new StringBuilder(("Sp:"+weatherResult.getWind().getSpeed()+
+                                " ,Deg:" + weatherResult.getWind().getDeg())).toString());
+                        Log.d("xxx", "accept: "+new StringBuilder(("Sp:"+weatherResult.getWind().getSpeed()+
+                                ",Deg:" + weatherResult.getWind().getDeg())).toString());
                         txt_pressure.setText(new StringBuilder(String.valueOf(weatherResult.getMain().getPressure()))
-                                .append("hpa").toString());
+                                .append(" hpa").toString());
                         txt_humidity.setText(new StringBuilder(String.valueOf(weatherResult.getMain().getHumidity()))
                                 .append(" % ").toString());
                         txt_sunrise.setText(Common.convertUnixToHour(weatherResult.getSys().getSunrise()));

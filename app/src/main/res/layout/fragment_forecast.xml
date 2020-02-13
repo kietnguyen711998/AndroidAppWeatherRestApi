@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#D8D5D5"
-    android:padding="16dp"
     tools:context=".ForecastFragment">
 
     <LinearLayout
@@ -47,7 +47,28 @@
         android:layout_below="@id/main_info"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="200dp">
     </androidx.recyclerview.widget.RecyclerView>
 
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/main_chart"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">.
+        <com.anychart.AnyChartView
+            android:id="@+id/rangeChart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <Button
+        android:background="@color/colorPrimary"
+        android:id="@+id/btn_open"
+        android:layout_alignParentBottom="true"
+        android:text="Chart 7 Days"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </RelativeLayout>
+

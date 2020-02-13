@@ -21,6 +21,7 @@ import com.example.appweather.Common.Common;
 import com.example.appweather.Model.WeatherResult;
 import com.example.appweather.Retrofit.IOpenWeatherMap;
 import com.example.appweather.Retrofit.RetrofitClient;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.label305.asynctask.SimpleAsyncTask;
@@ -45,13 +46,14 @@ import retrofit2.Retrofit;
 public class CityFragment extends Fragment {
     private List<String> lstCity;
     private MaterialSearchBar searchBar;
-    TextView txt_city_name,txt_humidity,txt_sunrise,txt_sunset,txt_pressure,txt_temperature,txt_description,txt_date_time,txt_wind,txt_geo_coord;
+    TextView txt_city_name, txt_humidity, txt_sunrise, txt_sunset, txt_pressure, txt_temperature, txt_description, txt_date_time, txt_wind, txt_geo_coord;
     LinearLayout weather_panel;
     ProgressBar loading;
     ImageView imageView;
 
     CompositeDisposable compositeDisposable;
     IOpenWeatherMap mService;
+    OnCallBackReceive onCallBackReceive;
 
     static CityFragment instance;
 
@@ -67,11 +69,23 @@ public class CityFragment extends Fragment {
         mService = retrofit.create(IOpenWeatherMap.class);
     }
 
+    public static CityFragment newInstance(String name, int age) {
+        Bundle bundle = new Bundle();
+        bundle.putString("name", name);
+        bundle.putInt("age", age);
+
+        CityFragment fragment = new CityFragment();
+        fragment.setArguments(bundle);
+
+        return fragment;
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootview = inflater.inflate(R.layout.fragment_city,container,false);
+        View rootview = inflater.inflate(R.layout.fragment_city, container, false);
 
         imageView = rootview.findViewById(R.id.img_weather);
         txt_city_name = rootview.findViewById(R.id.txt_city_name);
@@ -91,8 +105,17 @@ public class CityFragment extends Fragment {
         searchBar = rootview.findViewById(R.id.searchBar);
         searchBar.setEnabled(false);
         new AsyncLoadCity().execute();
+        SaveDataInObject();
         return rootview;
     }
+
+    public boolean SaveDataInObject() {
+        if (lstCity != null) {
+
+        }
+        return true;
+    }
+
     private class AsyncLoadCity extends SimpleAsyncTask<List<String>> {
 
         @Override
@@ -111,13 +134,14 @@ public class CityFragment extends Fragment {
                     builder.append(readed);
                 lstCity = new Gson().fromJson(builder.toString(), new TypeToken<List<String>>() {
                 }.getType());
-                Log.d("nnn", "doInBackground: "+lstCity.get(1));
+                Log.d("nnn", "doInBackground: " + lstCity.get(1));
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
             return lstCity;
         }
+
         @Override
         protected void onSuccess(final List<String> listCity) {
             super.onSuccess(listCity);
@@ -132,7 +156,7 @@ public class CityFragment extends Fragment {
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     List<String> suggest = new ArrayList<>();
-                    for (String search : listCity){
+                    for (String search : listCity) {
                         if (search.toLowerCase().contains(searchBar.getText().toLowerCase()))
                             suggest.add(search);
                     }
@@ -186,9 +210,9 @@ public class CityFragment extends Fragment {
                         txt_temperature.setText(new StringBuilder(String.valueOf(weatherResult.getMain().getTemp()))
                                 .append("°C").toString());
                         txt_date_time.setText(Common.convertUnixToDate(weatherResult.getDt()));
-                        txt_wind.setText(new StringBuilder(("Sp:"+weatherResult.getWind().getSpeed()+
+                        txt_wind.setText(new StringBuilder(("Sp:" + weatherResult.getWind().getSpeed() +
                                 " ,Deg:" + weatherResult.getWind().getDeg())).toString());
-                        Log.d("xxx", "accept: "+new StringBuilder(("Sp:"+weatherResult.getWind().getSpeed()+
+                        Log.d("xxx", "accept: " + new StringBuilder(("Sp:" + weatherResult.getWind().getSpeed() +
                                 ",Deg:" + weatherResult.getWind().getDeg())).toString());
                         txt_pressure.setText(new StringBuilder(String.valueOf(weatherResult.getMain().getPressure()))
                                 .append(" hpa").toString());
@@ -204,7 +228,7 @@ public class CityFragment extends Fragment {
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        Toast.makeText(getActivity(),""+ throwable.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 })
         );
@@ -221,4 +245,9 @@ public class CityFragment extends Fragment {
         compositeDisposable.clear();
         super.onStop();
     }
+
+
 }
+interface OnCallBackReceive{
+        void onCallBackReceive();
+        }

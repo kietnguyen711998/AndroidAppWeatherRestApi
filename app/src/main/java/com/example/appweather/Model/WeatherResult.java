@@ -1,8 +1,11 @@
 package com.example.appweather.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
-public class WeatherResult {
+public class WeatherResult implements Parcelable {
     private Coord coord;
     private List<Weather> weather;
     private String base;
@@ -17,6 +20,40 @@ public class WeatherResult {
 
     public WeatherResult() {
     }
+
+    protected WeatherResult(Parcel in) {
+        base = in.readString();
+        dt = in.readInt();
+        id = in.readInt();
+        name = in.readString();
+        cod = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(base);
+        dest.writeInt(dt);
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeInt(cod);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<WeatherResult> CREATOR = new Creator<WeatherResult>() {
+        @Override
+        public WeatherResult createFromParcel(Parcel in) {
+            return new WeatherResult(in);
+        }
+
+        @Override
+        public WeatherResult[] newArray(int size) {
+            return new WeatherResult[size];
+        }
+    };
 
     public Coord getCoord() {
         return coord;

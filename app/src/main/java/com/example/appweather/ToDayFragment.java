@@ -3,6 +3,8 @@ package com.example.appweather;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -15,34 +17,36 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appweather.Common.Common;
+import com.example.appweather.Model.Weather;
 import com.example.appweather.Model.WeatherResult;
 import com.example.appweather.Retrofit.IOpenWeatherMap;
 import com.example.appweather.Retrofit.RetrofitClient;
-import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
-import io.reactivex.Scheduler;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
-public class ToDayFragment extends Fragment{
+public class ToDayFragment extends Fragment {
     ImageView imageView;
-    TextView txt_city_name,txt_humidity,txt_sunrise,txt_sunset,txt_pressure,txt_temperature,txt_description,txt_date_time,txt_wind,txt_geo_coord;
+    TextView txt_city_name, txt_humidity, txt_sunrise, txt_sunset, txt_pressure, txt_temperature, txt_description, txt_date_time, txt_wind, txt_geo_coord;
     LinearLayout weather_panel;
     ProgressBar loading;
 
     CompositeDisposable compositeDisposable;
     IOpenWeatherMap mService;
+    private static String WEATHER_RESULT_KEY = "weather_result_key";
 
-    static ToDayFragment instance;
 
-    public static ToDayFragment getInstance() {
-        if (instance == null)
-            instance = new ToDayFragment();
-        return instance;
+    public static ToDayFragment getInstance(WeatherResult weatherResult) {
+        ToDayFragment toDayFragment = new ToDayFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(WEATHER_RESULT_KEY, weatherResult);
+        toDayFragment.setArguments(bundle);
+        return toDayFragment;
     }
 
     public ToDayFragment() {
@@ -69,12 +73,27 @@ public class ToDayFragment extends Fragment{
 
         weather_panel = itemView.findViewById(R.id.weather_panel);
         loading = itemView.findViewById(R.id.loading);
+        WeatherResult weatherResult = getArguments().getParcelable(WEATHER_RESULT_KEY);
+        if(weatherResult != null){
+            Toast.makeText(getContext(), "Call Ha Noi", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), weatherResult.getName(), Toast.LENGTH_SHORT).show();
+        } else{
+            getWeatherInformationByLocation();
+            Toast.makeText(getContext(), "Call Da Nang ", Toast.LENGTH_SHORT).show();
+        }
 
-        getWeatherInformation();
         return itemView;
     }
 
-    private void getWeatherInformation() {
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
+
+
+    private void getWeatherInformationByLocation() {
         compositeDisposable.add(mService.getWeatherByLatLng(String.valueOf(Common.current_location.getLatitude()),
                 String.valueOf(Common.current_location.getLongitude()),
                 Common.APP_ID,
@@ -92,9 +111,9 @@ public class ToDayFragment extends Fragment{
                         txt_description.setText(new StringBuilder("Weather in ")
                                 .append(weatherResult.getName()).toString());
                         txt_temperature.setText(new StringBuilder(String.valueOf(weatherResult.getMain().getTemp()))
-                                 .append("°C").toString());
+                                .append("°C").toString());
                         txt_date_time.setText(Common.convertUnixToDate(weatherResult.getDt()));
-                        txt_wind.setText(new StringBuilder(("Sp:"+weatherResult.getWind().getSpeed()+
+                        txt_wind.setText(new StringBuilder(("Sp:" + weatherResult.getWind().getSpeed() +
                                 " ,Deg:" + weatherResult.getWind().getDeg())).toString());
                         txt_pressure.setText(new StringBuilder(String.valueOf(weatherResult.getMain().getPressure()))
                                 .append(" hpa").toString());
@@ -108,11 +127,12 @@ public class ToDayFragment extends Fragment{
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        Toast.makeText(getActivity(),""+ throwable.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 })
         );
     }
+
     @Override
     public void onDestroy() {
         compositeDisposable.clear();

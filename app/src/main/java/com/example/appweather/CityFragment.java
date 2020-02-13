@@ -50,10 +50,16 @@ public class CityFragment extends Fragment {
     LinearLayout weather_panel;
     ProgressBar loading;
     ImageView imageView;
-
     CompositeDisposable compositeDisposable;
-    IOpenWeatherMap mService;
     OnCallBackReceive onCallBackReceive;
+    IOpenWeatherMap mService;
+    FloatingActionButton floatingActionButton;
+    WeatherResult currentWeatherResult;
+
+    public void setOnCallBackReceiveListener(OnCallBackReceive onCallBackReceive) {
+        this.onCallBackReceive = onCallBackReceive;
+    }
+
 
     static CityFragment instance;
 
@@ -101,6 +107,13 @@ public class CityFragment extends Fragment {
 
         weather_panel = rootview.findViewById(R.id.weather_panel);
         loading = rootview.findViewById(R.id.loading);
+        floatingActionButton = rootview.findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onCallBackReceive.onCallBackReceive(currentWeatherResult);
+            }
+        });
 
         searchBar = rootview.findViewById(R.id.searchBar);
         searchBar.setEnabled(false);
@@ -200,6 +213,9 @@ public class CityFragment extends Fragment {
                 .subscribe(new Consumer<WeatherResult>() {
                     @Override
                     public void accept(WeatherResult weatherResult) throws Exception {
+
+                        currentWeatherResult = weatherResult;
+
                         Picasso.get().load(new StringBuilder("https://openweathermap.org/img/wn/")
                                 .append(weatherResult.getWeather().get(0).getIcon())
                                 .append(".png").toString()).into(imageView);
@@ -248,6 +264,7 @@ public class CityFragment extends Fragment {
 
 
 }
-interface OnCallBackReceive{
-        void onCallBackReceive();
-        }
+
+interface OnCallBackReceive {
+    void onCallBackReceive(WeatherResult weatherResult);
+}

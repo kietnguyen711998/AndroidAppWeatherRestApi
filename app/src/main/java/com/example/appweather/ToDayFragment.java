@@ -49,7 +49,7 @@ public class ToDayFragment extends Fragment {
         return toDayFragment;
     }
 
-    public ToDayFragment() {
+    private ToDayFragment() {
         compositeDisposable = new CompositeDisposable();
         Retrofit retrofit = RetrofitClient.getInstance();
         mService = retrofit.create(IOpenWeatherMap.class);

@@ -1,8 +1,10 @@
 package com.example.appweather;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
@@ -14,6 +16,7 @@ import android.widget.RelativeLayout;
 
 import com.example.appweather.Adapter.ViewPagerAdapter;
 import com.example.appweather.Common.Common;
+import com.example.appweather.Model.WeatherResult;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -30,7 +33,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnCallBackReceive {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private LocationCallback locationCallback;
     private LocationRequest locationRequest;
 
-    private FloatingActionButton floatingActionButton;
+
     ViewPagerAdapter adapter;
 
     @Override
@@ -71,6 +74,14 @@ public class MainActivity extends AppCompatActivity {
                         Snackbar.make(coordinatorLayout, "Permission Denied", Snackbar.LENGTH_LONG).show();
                     }
                 }).check();
+    }
+
+    @Override
+    public void onAttachFragment(@NonNull Fragment fragment) {
+        if (fragment instanceof CityFragment) {
+            CityFragment cityFragment = (CityFragment) fragment;
+            cityFragment.setOnCallBackReceiveListener(this);
+        }
     }
 
     private void buildLocationCallBack() {
@@ -108,12 +119,11 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabs);
         viewPager = findViewById(R.id.view_pager);
         coordinatorLayout = findViewById(R.id.root_view);
-        floatingActionButton = findViewById(R.id.floatingActionButton);
-        floatingActionButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                adapter.getItem(0);
-            }
-        });
+
+    }
+
+    @Override
+    public void onCallBackReceive(WeatherResult weatherResult) {
+        adapter.replaceFragment(ToDayFragment.getInstance(weatherResult), 0);
     }
 }

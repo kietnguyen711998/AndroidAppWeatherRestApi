@@ -1,275 +1,314 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".CityFragment">
+
     <com.mancj.materialsearchbar.MaterialSearchBar
+        android:id="@+id/searchBar"
         style="@style/MaterialSearchBarLight"
-        app:mt_hint="City Name"
-        app:mt_speechMode="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/searchBar"/>
+        app:mt_hint="City Name"
+        app:mt_speechMode="false" />
+
     <FrameLayout
-        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
         <LinearLayout
-            android:layout_centerInParent="true"
             android:id="@+id/weather_panel"
-            android:visibility="gone"
-            android:orientation="vertical"
-            android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
+
             <TextView
                 android:id="@+id/txt_city_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weather in Danang,GB"
                 android:textColor="@color/colorAccent"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                android:text="Weather in Danang,GB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textStyle="bold" />
+
             <LinearLayout
-                android:layout_gravity="center_horizontal"
-                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
                 <ImageView
                     android:id="@+id/img_weather"
-                    android:src="@drawable/imghot"
                     android:layout_width="80dp"
-                    android:layout_height="80dp"/>
+                    android:layout_height="80dp"
+                    android:src="@drawable/imghot" />
+
                 <TextView
                     android:id="@+id/txt_temperature"
-                    android:textColor="@color/colorAccent"
-                    android:layout_marginLeft="8dp"
-                    android:textSize="50sp"
-                    android:textStyle="bold"
-                    android:text="30 C"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="30 C"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
             <TextView
                 android:id="@+id/txt_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weather in DaNang, VN"
                 android:textColor="@color/colorAccent"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                android:text="Weather in DaNang, VN"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textStyle="bold" />
+
             <TextView
-                android:layout_gravity="center_horizontal"
                 android:id="@+id/txt_date_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Weather in Danang,GB"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:text="Weather in Danang,GB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textStyle="bold" />
+
             <TableLayout
-                android:background="@drawable/boder"
-                android:layout_marginTop="10dp"
-                android:stretchColumns="*"
-                android:padding="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/boder"
+                android:padding="16dp"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
-                        android:background="@drawable/cell"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:text="Wind"
-                        android:gravity="center"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        android:background="@drawable/cell"
+                        android:gravity="center"
+                        android:text="Wind"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/txt_wind"
-                        android:background="@drawable/cell"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:layout_column="1"
-                        android:text="Speed:1 Deg:1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"/>
+                        android:layout_column="1"
+                        android:layout_weight="2"
+                        android:background="@drawable/cell"
+                        android:gravity="center"
+                        android:text="Speed:1 Deg:1"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
                 </TableRow>
 
             </TableLayout>
+
             <TableLayout
-                android:background="@drawable/boder"
-                android:layout_marginTop="10dp"
-                android:stretchColumns="*"
-                android:padding="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/boder"
+                android:padding="16dp"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
-                        android:background="@drawable/cell"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:text="Pressure"
-                        android:gravity="center"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        android:background="@drawable/cell"
+                        android:gravity="center"
+                        android:text="Pressure"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/txt_pressure"
-                        android:background="@drawable/cell"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_column="1"
+                        android:layout_weight="2"
+                        android:background="@drawable/cell"
                         android:gravity="center"
                         android:text="1013.75 hpa"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"/>
-                </TableRow>
-            </TableLayout>
-            <TableLayout
-                android:background="@drawable/boder"
-                android:layout_marginTop="10dp"
-                android:stretchColumns="*"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TableRow android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:background="@drawable/cell"
                         android:textColor="@color/colorAccent"
                         android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:text="Humidity"
-                        android:gravity="center"
+                        android:textStyle="bold" />
+                </TableRow>
+            </TableLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/boder"
+                android:padding="16dp"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        android:background="@drawable/cell"
+                        android:gravity="center"
+                        android:text="Humidity"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/txt_humidity"
-                        android:background="@drawable/cell"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:layout_column="1"
-                        android:text="88%"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"/>
+                        android:layout_column="1"
+                        android:layout_weight="2"
+                        android:background="@drawable/cell"
+                        android:gravity="center"
+                        android:text="88%"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
                 </TableRow>
 
             </TableLayout>
+
             <TableLayout
-                android:background="@drawable/boder"
-                android:layout_marginTop="10dp"
-                android:stretchColumns="*"
-                android:padding="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/boder"
+                android:padding="16dp"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:background="@drawable/cell"
+                        android:gravity="center"
+                        android:text="Sunrise"
                         android:textColor="@color/colorAccent"
                         android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:text="Sunrise"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"/>
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/txt_sunrise"
-                        android:background="@drawable/cell"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_column="1"
-                        android:text="06:17"
-                        android:gravity="center"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"/>
+                        android:layout_column="1"
+                        android:layout_weight="2"
+                        android:background="@drawable/cell"
+                        android:gravity="center"
+                        android:text="06:17"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
                 </TableRow>
 
             </TableLayout>
+
             <TableLayout
-                android:background="@drawable/boder"
-                android:layout_marginTop="10dp"
-                android:stretchColumns="*"
-                android:padding="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/boder"
+                android:padding="16dp"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
-                        android:background="@drawable/cell"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:text="Sunset"
-                        android:gravity="center"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        android:background="@drawable/cell"
+                        android:gravity="center"
+                        android:text="Sunset"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/txt_sunset"
-                        android:background="@drawable/cell"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_column="1"
-                        android:text="17:44"
-                        android:gravity="center"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"/>
+                        android:layout_column="1"
+                        android:layout_weight="2"
+                        android:background="@drawable/cell"
+                        android:gravity="center"
+                        android:text="17:44"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
                 </TableRow>
 
             </TableLayout>
+
             <TableLayout
-                android:background="@drawable/boder"
-                android:layout_marginTop="10dp"
-                android:stretchColumns="*"
-                android:padding="14dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/boder"
+                android:padding="14dp"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:background="@drawable/cell"
+                        android:gravity="center"
+                        android:text="Geo Coord"
                         android:textColor="@color/colorAccent"
                         android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:text="Geo Coord"
-                        android:gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/txt_geo_coords"
-                        android:background="@drawable/cell"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:layout_column="1"
-                        android:text="[16.07, 108.2]"
-                        android:gravity="center"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"/>
+                        android:layout_column="1"
+                        android:layout_weight="2"
+                        android:background="@drawable/cell"
+                        android:gravity="center"
+                        android:text="[16.07, 108.2]"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
                 </TableRow>
 
             </TableLayout>
@@ -278,11 +317,23 @@
 
         <ProgressBar
             android:id="@+id/loading"
-            android:indeterminate="true"
-            android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:indeterminate="true" />
+
     </FrameLayout>
 
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom">
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="301dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:src="@drawable/ic_add_black_24dp" />
+    </FrameLayout>
 </LinearLayout>

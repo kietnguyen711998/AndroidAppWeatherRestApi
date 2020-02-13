@@ -38,14 +38,6 @@
         android:layout_height="wrap_content"/>
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="301dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="end|bottom"
-        android:clickable="true"
-        android:src="@drawable/ic_add_black_24dp" />
+
 
 </RelativeLayout>

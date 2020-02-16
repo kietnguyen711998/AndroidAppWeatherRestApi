@@ -46,44 +46,33 @@ import retrofit2.Retrofit;
 public class CityFragment extends Fragment {
     private List<String> lstCity;
     private MaterialSearchBar searchBar;
-    TextView txt_city_name, txt_humidity, txt_sunrise, txt_sunset, txt_pressure, txt_temperature, txt_description, txt_date_time, txt_wind, txt_geo_coord;
-    LinearLayout weather_panel;
-    ProgressBar loading;
-    ImageView imageView;
-    CompositeDisposable compositeDisposable;
-    OnCallBackReceive onCallBackReceive;
-    IOpenWeatherMap mService;
-    FloatingActionButton floatingActionButton;
-    WeatherResult currentWeatherResult;
+    private TextView txt_city_name, txt_humidity, txt_sunrise, txt_sunset, txt_pressure, txt_temperature, txt_description, txt_date_time, txt_wind, txt_geo_coord;
+    private LinearLayout weather_panel;
+    private ProgressBar loading;
+    private ImageView imageView;
+    private CompositeDisposable compositeDisposable;
+    private OnCallBackReceive onCallBackReceive;
+    private IOpenWeatherMap mService;
+    private FloatingActionButton floatingActionButton;
+    private WeatherResult currentWeatherResult;
 
-    public void setOnCallBackReceiveListener(OnCallBackReceive onCallBackReceive) {
+    void setOnCallBackReceiveListener(OnCallBackReceive onCallBackReceive) {
+        //nhung ai goi ham nay se dang ky lang nghe su kien
         this.onCallBackReceive = onCallBackReceive;
     }
 
-
     static CityFragment instance;
 
-    public static CityFragment getInstance() {
+    static CityFragment getInstance() {
         if (instance == null)
             instance = new CityFragment();
         return instance;
     }
 
-    public CityFragment() {
+    private CityFragment() {
         compositeDisposable = new CompositeDisposable();
         Retrofit retrofit = RetrofitClient.getInstance();
         mService = retrofit.create(IOpenWeatherMap.class);
-    }
-
-    public static CityFragment newInstance(String name, int age) {
-        Bundle bundle = new Bundle();
-        bundle.putString("name", name);
-        bundle.putInt("age", age);
-
-        CityFragment fragment = new CityFragment();
-        fragment.setArguments(bundle);
-
-        return fragment;
     }
 
 
@@ -111,6 +100,7 @@ public class CityFragment extends Fragment {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 onCallBackReceive.onCallBackReceive(currentWeatherResult);
             }
         });
@@ -261,10 +251,9 @@ public class CityFragment extends Fragment {
         compositeDisposable.clear();
         super.onStop();
     }
-
-
 }
 
 interface OnCallBackReceive {
+    //Doc callback de hieu ro hon ve interface
     void onCallBackReceive(WeatherResult weatherResult);
 }

@@ -22,6 +22,7 @@ public class WeatherResult implements Parcelable {
     }
 
     protected WeatherResult(Parcel in) {
+        coord = in.readParcelable(Coord.class.getClassLoader());
         base = in.readString();
         dt = in.readInt();
         id = in.readInt();
@@ -31,6 +32,7 @@ public class WeatherResult implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(coord, flags);
         dest.writeString(base);
         dest.writeInt(dt);
         dest.writeInt(id);

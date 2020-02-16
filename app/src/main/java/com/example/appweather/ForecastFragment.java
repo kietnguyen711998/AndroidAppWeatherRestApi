@@ -197,8 +197,6 @@ public class ForecastFragment extends Fragment {
         txt_geo_coord.setText(new StringBuilder(weatherForecastResult.city.coord.toString()));
         WeatherForecaseAdapter weatherForecaseAdapter = new WeatherForecaseAdapter(getContext(), weatherForecastResult);
         recycler_view.setAdapter(weatherForecaseAdapter);
-
-
     }
 
     @Override

@@ -1,10 +1,15 @@
 package com.example.appweather.Adapter;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.example.appweather.Model.WeatherResult;
+import com.example.appweather.ToDayFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,15 +33,15 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         return fragmentList.size();
     }
 
-    public void addFragment(Fragment fragment,String title){
+    public void addFragment(Fragment fragment, String title) {
         fragmentList.add(fragment);
         fragmentTitle.add(title);
     }
 
-    public void replaceFragment(Fragment fragment, int pos){
-        fragmentList.add(pos, fragment);
-        fragmentList.remove(pos);
+    public void updateTodayFragment(WeatherResult weatherResult) {
+        ((ToDayFragment) fragmentList.get(0)).updateWeather(weatherResult);
     }
+
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {

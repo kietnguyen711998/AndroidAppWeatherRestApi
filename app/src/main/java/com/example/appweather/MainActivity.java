@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements OnCallBackReceive
 
     @Override
     public void onAttachFragment(@NonNull Fragment fragment) {
+        //Neu fragment duoc attach la CityFragment thi no se dang ky nhan su kien khi bam vao floatingbutton
         if (fragment instanceof CityFragment) {
             CityFragment cityFragment = (CityFragment) fragment;
             cityFragment.setOnCallBackReceiveListener(this);
@@ -104,6 +106,9 @@ public class MainActivity extends AppCompatActivity implements OnCallBackReceive
         adapter.addFragment(ForecastFragment.getInstance(), "5 DAYS");
         adapter.addFragment(CityFragment.getInstance(), "CiTy");
         viewPager.setAdapter(adapter);
+        //Khong cho viewpager load lai trang khi thay doi page
+        //Khong goi ham nay se khong update duoc todayfragment vi no cu resume cai fragment, dan den no cu chay vao ham getWeatherByLocation()
+        viewPager.setOffscreenPageLimit(2);
     }
 
     private void buildLocationRequest() {
@@ -124,6 +129,6 @@ public class MainActivity extends AppCompatActivity implements OnCallBackReceive
 
     @Override
     public void onCallBackReceive(WeatherResult weatherResult) {
-        adapter.replaceFragment(ToDayFragment.getInstance(weatherResult), 0);
+        adapter.updateTodayFragment(weatherResult);
     }
 }
